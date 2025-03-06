@@ -1,0 +1,25 @@
+.divider {
+  display: flex;
+  color: var(--commentColor);
+  width: 60%;
+  align-items: baseline;
+
+  p {
+    font-size: 0.97rem;
+  }
+}
+
+.divider>p {
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .divider {
+    width: 100%;
+  }
+
+
+}

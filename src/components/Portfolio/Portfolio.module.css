@@ -1,0 +1,24 @@
+.portfolio {
+    z-index: 2;
+    /* margin: 0; */
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: 20px;
+}
+
+.projectList {
+    /* margin: 0 5rem; */
+    display: grid;
+    grid-template-columns: repeat(2, minmax(24rem, 1fr));
+    column-gap: 3rem;
+    row-gap: 4.5rem;
+    /* grid-template-rows: repeat(auto-fit, minmax(20rem, 1fr)); */
+    /* grid-gap: 4rem; */
+}
+
+@media only screen and (max-width: 600px) {
+    .projectList {
+        display: flex;
+        flex-direction: column;
+    }
+
+}

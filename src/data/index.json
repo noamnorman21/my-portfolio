@@ -1,0 +1,186 @@
+{
+  "skills": [
+    {
+      "id": "3",
+      "title": "Programm` languages",
+      "stack": [
+        "TypeScript",
+        "JavaScript",
+        "Python",
+        "C#",
+        "C",
+        "Java"
+      ]
+    },
+    {
+      "id": "1",
+      "title": "Backend",
+      "stack": [
+        {
+          "name": "Node",
+          "icon": "NodeJS"
+        },
+        "Angular",
+        "Django",
+        "Flask",
+        "MongoDB",
+        "MySQL",
+        "PostgreSQL",
+        "Firebase"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Frontend",
+      "stack": [
+        {
+          "name": "HTML",
+          "icon": "HTML5"
+        },
+        {
+          "name": "CSS",
+          "icon": "CSS3"
+        },
+        "Tailwind-CSS",
+        "React",
+        "Redux",
+        {
+          "name": "Next",
+          "icon": "NextJS"
+        }
+      ]
+    }
+  ],
+  "portfolio": [
+    {
+      "id": "5",
+      "src": "/img/gadish-suite.png",
+      "title": "Gadish Suite application",
+      "description": "An application that showcases suite rental. It provides potential guests with all the information they need to make an informed decision and book a stay.",
+      "link": "gadish-suite.co.il",
+      "technologics": [
+        "react",
+        "html",
+        "css-modules",
+        "javascript"
+      ]
+    },
+    {
+      "id": "10",
+      "src": "/img/OmahaCOMP.png",
+      "title": "Poker Hand Evaluator",
+      "description": "A program designed to determine the winning hand in Omaha Hi/Lo poker games.",
+      "link": "github.com/shahar-shemesh/OmahaHiLo",
+      "technologics": [
+        "c++",
+        "oop"
+      ]
+    },
+    {
+      "id": "6",
+      "src": "/img/file-installation.jpg",
+      "title": "Auto installation on virtual machine",
+      "description": "A script establishes an ssh connection to the guest's virtual machine and allows to select a local folder containing files to be installed. It copies and installs the files at the vm, executes powershell scripts silently and retrieves relevant files to host machine.",
+      "link": "github.com/shahar-shemesh/file_installation_in_guest_vm",
+      "technologics": [
+        "python",
+        "ssh",
+        "powershell",
+        "shell scripting"
+      ]
+    },
+    {
+      "id": "2",
+      "src": "/img/green-dorshemesh.com.png",
+      "title": "Dor Portfolio website",
+      "description": "A portfolio website that showcases the works, info, and contact details of a graphic designer.",
+      "link": "dorshemesh.com",
+      "technologics": [
+        "express",
+        "ejs",
+        "html",
+        "css",
+        "javascript",
+        "mongo"
+      ]
+    },
+    {
+      "id": "5",
+      "src": "/img/barberbuddy.png",
+      "title": "Android Booking App",
+      "description": "A barbershop booking app for easily booking appointments, showing barbershop info, and managing bookings.",
+      "link": "github.com/shahar-shemesh/BARBERBUDDY",
+      "technologics": [
+        "java",
+        "android-studio",
+        "firebase"
+      ]
+    },
+    {
+      "id": "4",
+      "src": "/img/sunshineFood.png",
+      "title": "Food Order App",
+      "description": "A food ordering platform for jank-food and home-cooked meals.",
+      "link": "github.com/shahar-shemesh/sunshine-food-app",
+      "technologics": [
+        "react",
+        "node",
+        "javascript"
+      ]
+    },
+    {
+      "id": "7",
+      "src": "/img/tic-tac-toe-game.png",
+      "title": "Tic Tac Toe game",
+      "description": "A tic tac toe game for two players. runs in any modern web browser.",
+      "link": "github.com/shahar-shemesh/reactjs-Tic-Tac-Toe-Game",
+      "technologics": [
+        "react",
+        "javascript",
+        "html",
+        "css"
+      ]
+    },
+    {
+      "id": "8",
+      "src": "/img/snake.png",
+      "title": "Classic Snake Game",
+      "description": "A classic snake game - the player controls a snake that grows in length as it consumes food, while avoiding collisions with itself and the walls.",
+      "link": "github.com/shahar-shemesh/snake-game",
+      "technologics": [
+        "c++",
+        "oop"
+      ]
+    },
+    {
+      "id": "3",
+      "src": "/img/vscode.png",
+      "title": "VSCode Portfolio",
+      "description": "A personal portfolio built with React and TypeScript, featuring custom components and VSCode-inspired theming. It includes theme toggling and UI components that mimic a developer's environment.",
+      "link": "github.com/shahar-shemesh/my-vscode-theme-portfolio",
+      "technologics": [
+        "react",
+        "redux",
+        "toolkit",
+        "typescript",
+        "node",
+        "html",
+        "css-modules"
+      ]
+    },
+    {
+      "id": "4",
+      "src": "/img/askmeanything.png",
+      "title": "ask me anything",
+      "description": "Flask-based app using OpenAI API for Q&A, with PostgreSQL for data storage. Dockerized with Docker Compose and tested with pytest.",
+      "link": "github.com/shahar-shemesh/askMeAnything",
+      "technologics": [
+        "flask",
+        "python",
+        "openai",
+        "docker",
+        "postgreSQL"
+      ]
+    }
+  ]
+}

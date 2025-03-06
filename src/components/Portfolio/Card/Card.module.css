@@ -1,0 +1,55 @@
+.card {
+    z-index: 2;
+    /* margin-top: 1.5rem; */
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start;
+    scroll-margin: 20px;
+}
+
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: var(--lineNumbersColor);
+}
+
+.image {
+    display: flex;
+    align-items: center;
+    height: 10.5rem;
+    img {
+        width: 80%;
+        height: 95%;
+        object-fit: cover;
+        object-position: 50% 5%;
+        opacity: 0.8;
+        border-radius: 5px;
+    }
+}
+
+
+
+.fields {
+    color: var(--textColor);
+
+    .tech {
+        display: inline-block;
+    }
+
+    a {
+        color: var(--keywordColor);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .cardContent {
+        width: auto;
+    }
+
+    .image img {
+        width: 100%;
+        height: 9rem;
+    }
+}

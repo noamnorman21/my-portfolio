@@ -1,13 +1,283 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  /***** Main Colors: *****/
+  --textColor: #d4d4d4;
+  --commentColor: #4a9741;
+  --pageBackgroung: #1f1f1f;
+  --selectionBackground: #264f78;
+  --keywordColor: #569cd6;
+  --varColor: #8fcdef;
+  --stringColor: #ce9178;
+  --lineNumbersColor: #858585;
+  --lineNumbersColorFocus: #fff;
+  --leftLineColor: #5e5e5e;
+  --leftLineColorFocus: #b7b7b7;
+  --numberColor: #b5cea8;
+  --logoNameColor: #f9d81b;
+  --functionColor: #d8dcab;
+  --navLinksColor: #cd7cc9;
+  --borderLineColor: #303030;
+  --caretColor: #fff;
+  --tabColor: #252526;
+  --tabBorderColor: #5e5e5e;
+  --skillItemBackgroundColor: #04395e;
+  --skillItemHoverColor: #2a2d2e;
+  --skillIconColor: #72b8f7;
+  --terminalTabsColor: #858585;
+  --terminalTabFocusColor: #fff;
+  --terminalMsgColor: #5cc965;
+  --terminalNameColor: #24b8db;
+
+  --hexToFilter: invert(77%) sepia(46%) saturate(6278%) hue-rotate(192deg)
+    brightness(117%) contrast(94%);
+  /* https://isotropic.co/tool/hex-color-to-css-filter/ */
+
+  --terminalButtonsColor: invert(87%) sepia(6%) saturate(97%) hue-rotate(251deg)
+    brightness(89%) contrast(85%);
+  /* https://isotropic.co/tool/hex-color-to-css-filter/ */
+
+  --resizeAlertColor: invert(100%) sepia(100%) saturate(0%) hue-rotate(295deg)
+    brightness(106%) contrast(105%);
+  /* https://isotropic.co/tool/hex-color-to-css-filter/ */
+
+  --platformColor: #fff;
+  --brightness: 120%;
+
+  /***** Main Font: *****/
+  /* font-family: "Consolas", monospace; */
+  font-family: monospace, consolas;
+  font-size: 0.97rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+
+  /* color-scheme: light dark; */
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --moonColor: #1f1f1f;
+  --moonBackground: #fff;
+  --page-color-transition: all 0.5s ease, color 0.5s ease;
+}
+
+[data-theme="light"] {
+  /***** Main Colors: *****/
+  color: #000;
+  --textColor: #000;
+  --commentColor: #188018;
+  --pageBackgroung: #ffffff;
+  --selectionBackground: #264f78;
+  --keywordColor: #0000ff;
+  --varColor: #001080;
+  --stringColor: #a31515;
+  --lineNumbersColor: #237893;
+  --lineNumbersColorFocus: #0b226f;
+  --leftLineColor: #d3d3d3;
+  --leftLineColorFocus: #939393;
+  --numberColor: #098658;
+  --logoNameColor: #795e26;
+  --functionColor: #795e26;
+  --navLinksColor: #b71ede;
+  --borderLineColor: #eeeeee;
+  --caretColor: #000;
+  --tabColor: #f1f1f2;
+  --tabBorderColor: #d9d9d9;
+  --skillItemBackgroundColor: #dbeafb;
+  --skillItemHoverColor: #dbeafb;
+  --skillIconColor: #084587;
+  --terminalTabsColor: #a3a4a6;
+  --terminalTabFocusColor: #525353;
+  --terminalMsgColor: #beb364;
+  --terminalNameColor: #24b8db;
+
+  --hexToFilter: invert(11%) sepia(67%) saturate(5980%) hue-rotate(203deg)
+    brightness(92%) contrast(94%);
+  /* https://isotropic.co/tool/hex-color-to-css-filter/ */
+
+  --resizeAlertColor: invert(13%) sepia(51%) saturate(2614%) hue-rotate(203deg)
+    brightness(106%) contrast(100%);
+  /* https://isotropic.co/tool/hex-color-to-css-filter/ */
+
+  --terminalButtonsColor: invert(22%) sepia(0%) saturate(0%) hue-rotate(143deg)
+    brightness(94%) contrast(95%);
+  /* https://isotropic.co/tool/hex-color-to-css-filter/ */
+
+  --platformColor: #1f1f1f;
+  --brightness: 100%;
+}
+
+body {
+  background-color: var(--pageBackgroung);
+  margin: 0 10rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: text;
+  overflow-x: hidden;
+  transition: transform 0.8s ease-in-out, var(--page-color-transition);
+}
+
+body *::selection {
+  background-color: var(--selectionBackground);
+}
+
+/**************************************************************/
+
+/**************************************************************/
+
+section,
+nav {
+  position: relative;
+  margin: 3rem 0 3rem 0;
+  border: solid var(--leftLineColor);
+  border-width: 0 0 0 1px;
+  padding-left: 1.5rem;
+  scroll-snap-align: start;
+  scroll-margin: 20px;
+}
+
+header {
+  scroll-snap-align: start;
+  scroll-margin: 40px;
+}
+
+section:focus-within,
+nav:focus-within {
+  border: solid var(--leftLineColorFocus);
+  border-width: 0 0 0 1px;
+}
+
+#lines {
+  z-index: 1;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  display: grid;
+  align-content: baseline;
+  grid-template-rows: repeat(auto-fill, 1.5rem);
+
+  /* padding: 1rem 1.3rem; */
+  counter-reset: line;
+  text-align: left !important;
+
+  &::after {
+    content: none;
+    position: absolute;
+    border-right: 1px solid #5e5e5e;
+  }
+
+  p {
+    /* height: 1.5rem; */
+    width: 100%;
+    counter-increment: line;
+    /* padding-left: 35px; */
+
+    &::before {
+      display: flex;
+      flex-direction: column;
+      /* font-size: 0.9rem; */
+      content: counter(line);
+      /* width: 0.5vw; */
+      margin-left: -5rem;
+      margin-right: 5rem;
+      /* color: #a0a0a0; */
+      color: var(--lineNumbersColor);
+      width: 2em;
+      text-align: right;
+    }
+  }
+}
+
+#lines p:focus-within {
+  border: solid var(--borderLineColor);
+  border-width: 2px 0 2px 2px;
+  margin: -1px;
+
+  &::before {
+    color: var(--lineNumbersColorFocus);
+  }
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+  caret-color: var(--caretColor);
+}
+
+#card {
+  opacity: 0.4;
+  transition: all 0.3s;
+}
+
+#card.in-view {
+  transition-property: transform, opacity;
+  /* transition-duration: 1s; */
+  transition-timing-function: linear;
+  opacity: 1;
+}
+
+.iconFill {
+  fill: #ffffff;
+}
+
+/************************************ responsive *************************/
+
+@media only screen and (max-width: 600px) {
+  *:focus {
+    outline: none;
+  }
+
+  body {
+    margin: 0 1.5rem 0 3rem;
+  }
+
+  section,
+  nav {
+    margin: 1.5rem 0 1.5rem 0;
+  }
+
+  #lines {
+    z-index: 1;
+    height: 100vh;
+    width: 88vw;
+    position: absolute;
+    display: grid;
+    align-content: baseline;
+    grid-template-rows: repeat(auto-fill, 1.5rem);
+
+    /* padding: 1rem 1.3rem; */
+    counter-reset: line;
+    text-align: left !important;
+
+    &::after {
+      content: none;
+      position: absolute;
+      border-right: 1px solid #5e5e5e;
+    }
+
+    p {
+      /* height: 1.5rem; */
+      width: 100%;
+      counter-increment: line;
+      /* padding-left: 35px; */
+
+      &::before {
+        display: flex;
+        flex-direction: column;
+        /* font-size: 0.9rem; */
+        content: counter(line);
+        /* width: 0.5vw; */
+        margin-left: -3rem;
+        margin-right: 3rem;
+        color: #a0a0a0;
+        width: 2em;
+        text-align: right;
+      }
+    }
+  }
 }
