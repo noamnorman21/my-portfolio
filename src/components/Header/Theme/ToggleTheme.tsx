@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import classes from "./ToggleTheme.module.css";
 
-const ToggleTheme: React.FC = () => {
+export default function ToggleTheme() {
   const body = document.querySelector("body")!;
 
   const [theme, setTheme] = useState<Boolean>(() => {
@@ -39,5 +39,4 @@ const ToggleTheme: React.FC = () => {
       </div>
     </a>
   );
-};
-export default ToggleTheme;
+}

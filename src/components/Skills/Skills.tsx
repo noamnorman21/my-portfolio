@@ -14,7 +14,7 @@ type skillItem = {
   )[];
 };
 
-const Skills: React.FC = (props) => {
+export default function Skills() {
   return (
     <section id="myskills" tabIndex={0} className={classes.skills}>
       <ul className={classes.skillList}>
@@ -53,6 +53,4 @@ const Skills: React.FC = (props) => {
       </ul>
     </section>
   );
-};
-
-export default Skills;
+}
