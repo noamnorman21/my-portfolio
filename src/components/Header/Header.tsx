@@ -1,5 +1,3 @@
-// import myEmojy from '/img/my-avatar.png';
-
 import classes from "./Header.module.css";
 import ToggleTheme from "./Theme/ToggleTheme";
 

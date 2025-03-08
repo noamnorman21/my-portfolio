@@ -1,9 +1,7 @@
+import classes from "./Divider.module.css";
+import { useState, useEffect } from "react";
 
-import classes from './Divider.module.css';
-import { useState, useEffect } from 'react';
-
-const Divider: React.FC = (props) => {
-
+export default function Divider() {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -11,21 +9,18 @@ const Divider: React.FC = (props) => {
       setWidth(window.innerWidth);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
     <div className={classes.divider}>
-      /*<p>{"*".repeat(width)}</p>*/
+      {"/*"}
+      <p>{"*".repeat(width)}</p>
+      {"*/"}
     </div>
-
   );
-};
-
-
-export default Divider;
-
+}

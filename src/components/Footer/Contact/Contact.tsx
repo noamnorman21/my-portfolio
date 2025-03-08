@@ -12,12 +12,13 @@ interface ContactProps {
   setVisible: (newState: boolean) => void;
 }
 
-const Contact: React.FC<ContactProps> = (props) => {
+export default function Contact(props: ContactProps) {
   const dispatch = useDispatch();
   const terminalState: boolean = useSelector(
     (state: RootState) => state.terminal.open
   );
   const emailInputRef = useRef<HTMLInputElement | null>(null); // Fixed here
+  const fromNameInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     if (terminalState && emailInputRef.current) emailInputRef.current.focus();
@@ -31,10 +32,17 @@ const Contact: React.FC<ContactProps> = (props) => {
     if (submitRef.current) {
       submitRef.current.value = "Sending...";
     }
+    const serviceID = process.env.PUBLIC_EMAILJS_SERVICE_ID!;
+    const templateID = process.env.PUBLIC_EMAILJS_TEMPLATE_ID!;
+    const apiKey = process.env.PUBLIC_EMAILJS_API_KEY! || "";
+    if (!serviceID || !templateID) {
+      console.error("EmailJS service ID or template ID is missing.");
+      return;
+    }
 
     emailjs
-      .sendForm("noam.website", "noam.website", props.formRef.current!, {
-        publicKey: "B2ReO4YLnvHV3iZUt",
+      .sendForm(serviceID, templateID, props.formRef.current!, {
+        publicKey: apiKey,
       })
       .then(
         async () => {
@@ -63,12 +71,28 @@ const Contact: React.FC<ContactProps> = (props) => {
       onSubmit={sendEmail}
     >
       <span className={classes.field}>
-        <label>Email:</label>
-        <input type="email" name="user_email" ref={emailInputRef} required />
+        <label htmlFor="from_name">Name:</label>
+        <input
+          id="from_name"
+          name="from_name"
+          type="text"
+          ref={fromNameInputRef}
+          required
+        />
       </span>
       <span className={classes.field}>
-        <label>Message:</label>
-        <textarea name="message" />
+        <label htmlFor="user_email">Email:</label>
+        <input
+          type="email"
+          name="user_email"
+          id="user_email"
+          ref={emailInputRef}
+          required
+        />
+      </span>
+      <span className={classes.field}>
+        <label htmlFor="message">Message:</label>
+        <textarea id="message" name="message" />
       </span>
       <span className={classes.submit}>
         <input
@@ -81,6 +105,4 @@ const Contact: React.FC<ContactProps> = (props) => {
       </span>
     </form>
   );
-};
-
-export default Contact;
+}

@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import classes from "./Footer.module.css";
 
-const TerminalMessage: React.FC<{
+interface TerminalMessageProps {
   terminalMsgRef: React.RefObject<HTMLDivElement | null>;
-}> = (props) => {
+}
+
+export default function TerminalMessage({
+  terminalMsgRef,
+}: TerminalMessageProps) {
   const time = new Date().toLocaleTimeString();
   const [visitCount, setVisitCount] = useState<number>(0);
 
@@ -18,7 +22,7 @@ const TerminalMessage: React.FC<{
   return (
     <div
       id="leaveMessage"
-      ref={props.terminalMsgRef}
+      ref={terminalMsgRef}
       className={classes.leaveMessage}
     >
       <span className={classes.currentTime}>{time}</span>
@@ -28,6 +32,4 @@ const TerminalMessage: React.FC<{
       <span className={classes.fileUpdated}>(x{visitCount})</span>
     </div>
   );
-};
-
-export default TerminalMessage;
+}
