@@ -156,8 +156,9 @@ export default function Footer() {
               />
               <div>
                 <p>
-                  &copy; {new Date().getFullYear()} Noam Norman. All rights
-                  reserved.
+                  <i className="bx bx-heart bx-burst"></i> Made By Noam Norman.
+                  &copy; {new Date().getFullYear()} All rights reserved.{" "}
+                  <i className="bx bx-heart bx-burst"></i>
                 </p>
               </div>
             </>
