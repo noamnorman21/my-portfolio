@@ -5,9 +5,8 @@ footer {
   grid-template-areas:
     "resizer"
     "container";
-
   position: fixed;
-  top: 85vh;
+  top: 70vh;
   width: 100%;
   height: 100%;
   margin: 0 -10rem;
@@ -16,7 +15,7 @@ footer {
   /* transition: all 0.4s; */
 
   &.expand {
-    top: 17% !important;
+    top: 25% !important;
   }
 
   .resizer {
@@ -63,7 +62,6 @@ footer {
   column-gap: 1.8rem;
   background-color: transparent;
   border: none;
-  
 }
 
 .tab:hover {
@@ -97,7 +95,7 @@ footer {
 }
 
 .slide-up-hidden {
-  max-height: 0;
+  height: auto;
 }
 
 .name {

@@ -71,7 +71,7 @@
     },
     {
       "id": "2",
-      "src": "/img/avatar/myemoji.png",
+      "src": "/img/projects/vscode.png",
       "title": "My Portfolio",
       "description": "A personal portfolio built with React and TypeScript, featuring custom components and VSCode-inspired theming. It includes theme toggling and UI components that mimic a developer's environment.",
       "link": "github.com/noamnorman21/my-portfolio",

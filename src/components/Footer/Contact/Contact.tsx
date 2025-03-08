@@ -17,14 +17,14 @@ export default function Contact(props: ContactProps) {
   const terminalState: boolean = useSelector(
     (state: RootState) => state.terminal.open
   );
-  const emailInputRef = useRef<HTMLInputElement | null>(null); // Fixed here
+  const emailInputRef = useRef<HTMLInputElement | null>(null);
   const fromNameInputRef = useRef<HTMLInputElement | null>(null);
+  const submitRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (terminalState && emailInputRef.current) emailInputRef.current.focus();
+    if (terminalState && fromNameInputRef.current)
+      fromNameInputRef.current.focus();
   }, [terminalState]);
-
-  const submitRef = useRef<HTMLInputElement>(null);
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,9 +32,13 @@ export default function Contact(props: ContactProps) {
     if (submitRef.current) {
       submitRef.current.value = "Sending...";
     }
-    const serviceID = process.env.PUBLIC_EMAILJS_SERVICE_ID!;
-    const templateID = process.env.PUBLIC_EMAILJS_TEMPLATE_ID!;
-    const apiKey = process.env.PUBLIC_EMAILJS_API_KEY! || "";
+    const serviceID = process.env.REACT_APP_EMAILJS_SERVICE_ID!;
+    const templateID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID!;
+    const apiKey = process.env.REACT_APP_EMAILJS_API_KEY! || "";
+    console.log("Service ID:", serviceID);
+    console.log("Template ID:", templateID);
+    console.log("API Key:", apiKey);
+
     if (!serviceID || !templateID) {
       console.error("EmailJS service ID or template ID is missing.");
       return;
@@ -95,13 +99,7 @@ export default function Contact(props: ContactProps) {
         <textarea id="message" name="message" />
       </span>
       <span className={classes.submit}>
-        <input
-          ref={submitRef}
-          id="submit"
-          type="submit"
-          value="Send"
-          required
-        />
+        <input ref={submitRef} id="submit" type="submit" value="Send" />
       </span>
     </form>
   );

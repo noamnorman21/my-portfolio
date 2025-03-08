@@ -1,83 +1,75 @@
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 3rem 0 3rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3rem 0 3rem 0;
 }
-
 
 .logo {
-    display: flex;
-    align-items: center;
-    width: 40%;
-    gap: 2rem;
+  display: flex;
+  align-items: center;
+  width: 40%;
+  gap: 2rem;
 }
-
 
 .emojy {
-    display: flex;
-    align-items: center;
-    img {
-        border-radius: 50%;
-        width: 8vw;
-        border: 3px solid var(--commentColor);
-    }
+  display: flex;
+  align-items: center;
+  img {
+    border-radius: 50%;
+    width: 8vw;
+    border: 3px solid var(--commentColor);
+  }
 }
-
 
 .content {
+  .myname {
+    font-size: 1.3rem;
+    color: var(--logoNameColor);
+  }
 
-    .myname {
-        font-size: 1.3rem;
-        color: var(--logoNameColor);
-    }
-
-    .mytitle {
-        color: var(--keywordColor);
-    }
-
+  .mytitle {
+    color: var(--keywordColor);
+  }
 }
 
-
 .contactButtons {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .platformLink {
-    color: var(--platformColor);
+  color: var(--platformColor);
 }
 
-
 @media only screen and (max-width: 600px) {
-    header {
-        align-items: flex-start;
-        margin: 3rem 0 1.5rem 0;
-    }
+  header {
+    align-items: flex-start;
+    margin: 3rem 0 1.5rem 0;
+  }
 
-    .logo {
-        display: flex;
-        align-items: flex-start;
-        width: auto;
-        gap: 1.4rem;
-    }
-    
-    .contactButtons {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
+  .logo {
+    display: flex;
+    align-items: flex-start;
+    width: auto;
+    gap: 1.4rem;
+  }
 
-    .icon {
-        font-size: 2rem !important;
-    }
+  .contactButtons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
 
-    .emojy {
-        img {
-            border-radius: 50%;
-            width: 15vw;
-        }
+  .icon {
+    font-size: 2rem !important;
+  }
+
+  .emojy {
+    img {
+      border-radius: 50%;
+      width: 15vw;
     }
-    
+  }
 }

@@ -36,7 +36,7 @@ export default function Footer() {
   };
 
   const viewportHeight = window.innerHeight;
-  const vh = 80;
+  const vh = 70;
   const px = (vh / 100) * viewportHeight;
   const [sidebarTop, setSidebarTop] = useState(px);
 
@@ -88,7 +88,7 @@ export default function Footer() {
     >
       <div className={classes.resizer} style={{ cursor: "ns-resize" }}>
         <span className={classes.resizeAlert}>
-          <i className="resize"></i>
+          <i onDoubleClick={onTerminal} className="resize"></i>
         </span>
       </div>
 
@@ -144,7 +144,7 @@ export default function Footer() {
           </span>
           <span>
             <i className="plus"></i>
-            <i className="arrow-down"></i>
+            {/* <i className="arrow-down"></i> */}
           </span>
           <span>
             <i className="trash"></i>

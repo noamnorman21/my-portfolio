@@ -1,38 +1,32 @@
+import classes from "./Navigation.module.css";
+// import footerClasses from "../Footer/Footer.module.css";
+import { useDispatch } from "react-redux";
+import { expandTerminal as expandTerminalAction } from "../../store/terminalSlice";
 
-import classes from './Navigation.module.css';
-import footerClasses from '../Footer/Footer.module.css';
-import { useDispatch } from 'react-redux';
-import { expandTerminal as expandTerminalAction } from '../../store/terminalSlice';
-
-const Navigation: React.FC = (props) => {
-
+export default function Navigation() {
   const dispatch = useDispatch();
 
   return (
-    <nav tabIndex={0} id='navigation'>
+    <nav tabIndex={0} id="navigation">
       <ul className={classes.nav_links}>
-
         <li className={classes.nav_item}>
-          <a href="#about">about me</a>
+          <a href="#about">About Me</a>
         </li>
 
         <li className={classes.nav_item}>
-          <a href="#myskills">my skills</a>
+          <a href="#myskills">My Skills</a>
         </li>
 
         <li className={classes.nav_item}>
-          <a href="#portfolio">portfolio</a>
+          <a href="#portfolio">Portfolio</a>
         </li>
 
         <li className={classes.nav_item}>
-          <a onClick={() => dispatch(expandTerminalAction())}>contact</a>
+          <button onClick={() => dispatch(expandTerminalAction())}>
+            Contact
+          </button>
         </li>
-
       </ul>
     </nav>
   );
-};
-
-export default Navigation;
-
-
+}

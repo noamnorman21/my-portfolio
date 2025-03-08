@@ -1,26 +1,35 @@
-nav a {
-    margin: 2rem 0 1rem 0;
-    color: var(--navLinksColor) !important;
-    text-decoration: none;
-    cursor: pointer;
+nav a,
+nav button {
+  margin: 2rem 0 1rem 0;
+  color: var(--navLinksColor) !important;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.nav_links{
-    display: grid;
+nav button {
+  background-color: transparent;
+  border: none;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  font-size: 0.97rem;
 }
-.nav_item{
-    display: inline-block;
-    width: 20%;
-    z-index: 2;
+
+.nav_links {
+  display: grid;
+}
+.nav_item {
+  display: inline-block;
+  width: 20%;
+  z-index: 2;
 }
 
 @media only screen and (max-width: 600px) {
-    nav {
-        margin: 0 0 1rem 0;
-    }
+  nav {
+    margin: 0 0 1rem 0;
+  }
 
-    .nav_item{
-        width: 50%;
-    }
-
+  .nav_item {
+    width: 50%;
+  }
 }
