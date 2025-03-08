@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/noamnorman21/my-portfolio/static/css/main.7ce53410.css",
+    "main.js": "/noamnorman21/my-portfolio/static/js/main.e1720a9f.js",
+    "index.html": "/noamnorman21/my-portfolio/index.html",
+    "static/media/c-sharp.svg": "/noamnorman21/my-portfolio/static/media/c-sharp.17f29e8283d6b5cd0c34.svg",
+    "main.7ce53410.css.map": "/noamnorman21/my-portfolio/static/css/main.7ce53410.css.map",
+    "main.e1720a9f.js.map": "/noamnorman21/my-portfolio/static/js/main.e1720a9f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7ce53410.css",
+    "static/js/main.e1720a9f.js"
+  ]
+}

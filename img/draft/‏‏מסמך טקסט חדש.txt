@@ -1,0 +1,37 @@
+    {
+      "id": "6",
+      "src": "/img/file-installation.jpg",
+      "title": "Auto installation on virtual machine",
+      "description": "A script establishes an ssh connection to the guest's virtual machine and allows to select a local folder containing files to be installed. It copies and installs the files at the vm, executes powershell scripts silently and retrieves relevant files to host machine.",
+      "link": "github.com/noamnorman21/file_installation_in_guest_vm",
+      "technologics": [
+        "python",
+        "ssh",
+        "powershell",
+        "shell scripting"
+      ]
+    },
+    {
+      "id": "7",
+      "src": "/img/tic-tac-toe-game.png",
+      "title": "Tic Tac Toe game",
+      "description": "A tic tac toe game for two players. runs in any modern web browser.",
+      "link": "github.com/noamnorman21/reactjs-Tic-Tac-Toe-Game",
+      "technologics": [
+        "react",
+        "javascript",
+        "html",
+        "css"
+      ]
+    },
+    {
+      "id": "8",
+      "src": "/img/snake.png",
+      "title": "Classic Snake Game",
+      "description": "A classic snake game - the player controls a snake that grows in length as it consumes food, while avoiding collisions with itself and the walls.",
+      "link": "github.com/noamnorman21/snake-game",
+      "technologics": [
+        "c++",
+        "oop"
+      ]
+    }
