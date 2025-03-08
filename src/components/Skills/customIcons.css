@@ -23,7 +23,7 @@ i[class$="mssql"]:before {
 }
 
 i[class$="c-sharp"]:before {
-  content: url("../../../public/img/icons/c-sharp.svg");
+  content: url("../../../public/img/c-sharp.svg");
 }
 
 i[class$="astro"]:before {
