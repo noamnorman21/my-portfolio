@@ -6,14 +6,17 @@ import TerminalMessage from "./TerminalMessage";
 import { RootState } from "../../store";
 import {
   expandTerminal as expandTerminalAction,
-  dispayLeaveMessage as dispayLeaveMessageAction,
+  // dispayLeaveMessage as dispayLeaveMessageAction,
 } from "../../store/terminalSlice";
+import ExperienceTimeline from "./Experience/ExperienceTimeline";
 
 export default function Footer() {
   const dispatch = useDispatch();
   const terminalState = useSelector((state: RootState) => state.terminal);
 
-  const [contactFormVisible, setContactFormVisible] = useState<boolean>(true);
+  const [activeTab, setActiveTab] = useState<
+    "message" | "copyrights" | "experience"
+  >("message");
 
   const terminalMsgRef = useRef<HTMLDivElement | null>(null);
   const contactForm = useRef<HTMLFormElement>(null);
@@ -31,7 +34,7 @@ export default function Footer() {
           ref.current!.style.display = "none";
         },
         { once: true }
-      ); // Ensures the listener is removed after it's called
+      );
     }
   };
 
@@ -48,45 +51,47 @@ export default function Footer() {
   };
 
   const rsMouseDownHandler = (e: MouseEvent<HTMLElement>) => {
-    if (["INPUT", "TEXTAREA"].includes((e.target as HTMLElement).tagName)) {
-      dispatch(dispayLeaveMessageAction(false));
-      if (!terminalState.open) {
-        dispatch(expandTerminalAction());
+    if (!(e.target as HTMLElement).classList.contains(classes.resizer)) return;
+
+    e.preventDefault();
+    const y = e.clientY;
+    const sbTop = window.getComputedStyle(sidebarRef.current!).top;
+    const initialTop = parseInt(sbTop, 10);
+
+    const mouseMoveHandler = (e: { clientY: number }) => {
+      const dy = e.clientY - y;
+      const newTop = initialTop + dy;
+
+      if (newTop >= 10 && newTop <= viewportHeight - 10) {
+        setSidebarTop(newTop);
       }
-    } else {
-      e.preventDefault();
-      const y = e.clientY;
-      const sbTop = window.getComputedStyle(sidebarRef.current!).top;
-      const initialTop = parseInt(sbTop, 10);
+    };
 
-      const mouseMoveHandler = (e: { clientY: number }) => {
-        const dy = e.clientY - y;
-        const newTop = initialTop + dy;
+    const mouseUpHandler = () => {
+      document.removeEventListener("mouseup", mouseUpHandler);
+      document.removeEventListener("mousemove", mouseMoveHandler);
+    };
 
-        if (newTop >= 10 && newTop <= viewportHeight - 10) {
-          setSidebarTop(newTop);
-        }
-      };
+    document.addEventListener("mousemove", mouseMoveHandler);
+    document.addEventListener("mouseup", mouseUpHandler);
+  };
 
-      const mouseUpHandler = () => {
-        document.removeEventListener("mouseup", mouseUpHandler);
-        document.removeEventListener("mousemove", mouseMoveHandler);
-      };
-
-      document.addEventListener("mousemove", mouseMoveHandler);
-      document.addEventListener("mouseup", mouseUpHandler);
-    }
+  const handleTabClick = (tab: "message" | "copyrights" | "experience") => {
+    setActiveTab(tab);
   };
 
   return (
     <footer
       id="footer"
       ref={sidebarRef}
-      onMouseDown={rsMouseDownHandler}
       style={{ top: `${sidebarTop}px` }}
       className={terminalState.open ? classes.expand : ""}
     >
-      <div className={classes.resizer} style={{ cursor: "ns-resize" }}>
+      <div
+        className={classes.resizer}
+        style={{ cursor: "ns-resize" }}
+        onMouseDown={rsMouseDownHandler}
+      >
         <span className={classes.resizeAlert}>
           <i onDoubleClick={onTerminal} className="resize"></i>
         </span>
@@ -96,46 +101,77 @@ export default function Footer() {
         <div className={classes.footerContent}>
           <div className={classes.footerNav}>
             <div className={classes.tabs}>
-              <a
-                role="button"
-                href="/"
-                className={`${classes.tab} ${classes.active}`}
+              <button
+                className={`${classes.tab} ${
+                  activeTab === "message" ? classes.active : ""
+                }`}
+                onClick={() => handleTabClick("message")}
               >
                 LEAVE A MESSAGE
-              </a>
-              <a role="button" href="/" className={classes.tab}>
+              </button>
+              <button
+                className={`${classes.tab} ${
+                  activeTab === "copyrights" ? classes.active : ""
+                }`}
+                onClick={() => handleTabClick("copyrights")}
+              >
                 COPYRIGHTS
-              </a>
-              <a role="button" href="/" className={classes.tab}>
-                PLATFORMS
-              </a>
-              <a role="button" href="#header" className={classes.tab}>
+              </button>
+              <button
+                className={`${classes.tab} ${
+                  activeTab === "experience" ? classes.active : ""
+                }`}
+                onClick={() => handleTabClick("experience")}
+              >
+                EXPERIENCE
+              </button>
+              <button
+                className={classes.tab}
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 TOP
-              </a>
+              </button>
             </div>
           </div>
 
-          <div
-            className={`${classes["slide-up"]} ${
-              !terminalState.leaveMessage
-                ? classes["slide-up-hidden"]
-                : classes["slide-down"]
-            }`}
-          >
-            <TerminalMessage terminalMsgRef={terminalMsgRef} />
-          </div>
-
-          <div
-            className={`${classes.form} ${classes["slide-up"]} ${
-              !contactFormVisible ? classes["slide-up-hidden"] : ""
-            }`}
-          >
-            <Contact
-              formRef={contactForm as React.RefObject<HTMLFormElement>}
-              handleHide={handleHide}
-              setVisible={setContactFormVisible}
-            />
-          </div>
+          {activeTab === "message" && (
+            <>
+              <TerminalMessage
+                terminalMsgRef={terminalMsgRef}
+                terminalTxt="leave a message"
+                terminalPath="/contact"
+              />
+              <Contact
+                formRef={contactForm as React.RefObject<HTMLFormElement>}
+                handleHide={handleHide}
+              />
+            </>
+          )}
+          {activeTab === "copyrights" && (
+            <>
+              <TerminalMessage
+                terminalMsgRef={terminalMsgRef}
+                terminalTxt="copyrights"
+                terminalPath="/"
+              />
+              <div>
+                <p>
+                  &copy; {new Date().getFullYear()} Noam Norman. All rights
+                  reserved.
+                </p>
+              </div>
+            </>
+          )}
+          {activeTab === "experience" && (
+            <>
+              <TerminalMessage
+                terminalMsgRef={terminalMsgRef}
+                terminalTxt="experience"
+                terminalPath="/"
+              />
+              <ExperienceTimeline />
+            </>
+          )}
         </div>
 
         <div className={classes.terminalButtons}>
@@ -144,7 +180,6 @@ export default function Footer() {
           </span>
           <span>
             <i className="plus"></i>
-            {/* <i className="arrow-down"></i> */}
           </span>
           <span>
             <i className="trash"></i>

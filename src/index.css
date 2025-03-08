@@ -8,7 +8,7 @@
   /***** Main Colors: *****/
   --textColor: #d4d4d4;
   --commentColor: #4a9741;
-  --pageBackgroung: #1f1f1f;
+  --pageBackground: #1f1f1f;
   --selectionBackground: #264f78;
   --keywordColor: #569cd6;
   --varColor: #8fcdef;
@@ -72,7 +72,7 @@
   color: #000;
   --textColor: #000;
   --commentColor: #188018;
-  --pageBackgroung: #ffffff;
+  --pageBackground: #ffffff;
   --selectionBackground: #264f78;
   --keywordColor: #0000ff;
   --varColor: #001080;
@@ -114,7 +114,7 @@
 }
 
 body {
-  background-color: var(--pageBackgroung);
+  background-color: var(--pageBackground);
   margin: 0 10rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

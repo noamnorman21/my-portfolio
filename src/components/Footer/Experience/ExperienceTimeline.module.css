@@ -1,0 +1,96 @@
+.timelineContainer {
+  padding: 1.5rem 0;
+  width: 100%;
+  color: white;
+}
+
+.timelineTitle {
+  color: var(--varColor);
+  margin-bottom: 2rem;
+  font-size: 1.75rem;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.timelineHeader {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* The continuous timeline line */
+.timelineHeader:before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  background-color: var(--varColor);
+  width: 100%;
+  top: 50%;
+  z-index: 1;
+}
+
+.timelineNode {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  width: 220%;
+}
+
+.iconContainer {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--skillItemBackgroundColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--textColor);
+  border: 2px solid var(--textColor);
+}
+
+.timelineArrow {
+  color: var(--varColor);
+  font-size: 1.5rem;
+  font-weight: bold;
+  position: absolute;
+  right: -5px;
+  z-index: 2;
+  transform: rotate(360deg) translateY(0%);
+}
+
+.timelineContent {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.timelineItem {
+  width: 20%;
+  text-align: center;
+}
+
+.institution {
+  color: var(--varColor);
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.title {
+  color: var(--textColor);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.date {
+  color: var(--textColor);
+  margin: 0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}

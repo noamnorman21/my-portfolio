@@ -3,10 +3,14 @@ import classes from "./Footer.module.css";
 
 interface TerminalMessageProps {
   terminalMsgRef: React.RefObject<HTMLDivElement | null>;
+  terminalTxt?: string;
+  terminalPath?: string;
 }
 
 export default function TerminalMessage({
   terminalMsgRef,
+  terminalTxt,
+  terminalPath,
 }: TerminalMessageProps) {
   const time = new Date().toLocaleTimeString();
   const [visitCount, setVisitCount] = useState<number>(0);
@@ -27,8 +31,8 @@ export default function TerminalMessage({
     >
       <span className={classes.currentTime}>{time}</span>
       <span className={classes.name}>[noam]</span>
-      <span className={classes.message}>leave a message</span>
-      <span className={classes.path}>/contact</span>
+      <span className={classes.message}>{terminalTxt}</span>
+      <span className={classes.path}>{terminalPath}</span>
       <span className={classes.fileUpdated}>(x{visitCount})</span>
     </div>
   );
