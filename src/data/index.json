@@ -55,7 +55,7 @@
   "portfolio": [
     {
       "id": "1",
-      "src": "../img/projects/worcare-app.png",
+      "src": "/img/worcare-app.png",
       "title": "WorCare - React Native Mobile App",
       "description": "Mobile App concept for Israel's home nursing care market.",
       "link": "github.com/noamnorman21/worCare",
@@ -71,7 +71,7 @@
     },
     {
       "id": "2",
-      "src": "./img/projects/vscode.png",
+      "src": "/img/vscode.png",
       "title": "My Portfolio",
       "description": "A personal portfolio built with React and TypeScript, featuring custom components and VSCode-inspired theming. It includes theme toggling and UI components that mimic a developer's environment.",
       "link": "github.com/noamnorman21/my-portfolio",
@@ -87,7 +87,7 @@
     },
     {
       "id": "3",
-      "src": "img/projects/shoppinglisttoapi.png",
+      "src": "img/shoppinglisttoapi.png",
       "title": "Shopping List App",
       "description": "A simple shopping list app built with React and TypeScript, featuring a clean and intuitive UI.",
       "link": "github.com/noamnorman21/ShoppingList",
@@ -102,7 +102,7 @@
     },
     {
       "id": "4",
-      "src": "./img/projects/ilais-web.jpg",
+      "src": "/img/ilais-web.jpg",
       "title": "ILAIS - Israel (AIS) Website",
       "description": " A website for ILAIS, providing resources and updates for Israel's information systems community.",
       "link": "ilais.org.il",
@@ -116,7 +116,7 @@
     },
     {
       "id": "5",
-      "src": "/public/img/projects/lironet-web.png",
+      "src": "/img/lironet-web.png",
       "title": "LIRONET - Portfolio and Online Store for a Graphic Designer",
       "description": "A graphic designer’s portfolio and online shop showcasing creative works and original designs.",
       "link": "lironet.co.il",
@@ -131,7 +131,7 @@
     },
     {
       "id": "6",
-      "src": "/img/projects/AZ-web.jpeg",
+      "src": "/img/AZ-web.jpeg",
       "title": "Anat Ziony - Portfolio Website",
       "description": "A sleek portfolio website showcasing Anat Ziony's work and services.",
       "link": "anatziony.co.il",
