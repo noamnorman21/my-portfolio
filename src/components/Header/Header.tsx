@@ -6,7 +6,7 @@ export default function Header() {
     <header id="header">
       <div className={classes.logo}>
         <div className={classes.emojy}>
-          <img src="/img/my-avatar.png" alt="noam norman" />
+          <img src="/img/My-Avatar.png" alt="noam norman" />
         </div>
 
         <div className={classes.content}>
