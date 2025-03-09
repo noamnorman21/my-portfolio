@@ -1,13 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useRef, MouseEvent } from "react";
+import {
+  useState,
+  useRef,
+  MouseEvent,
+  useEffect,
+  useState as useReactState,
+} from "react";
 import Contact from "./Contact/Contact";
 import classes from "./Footer.module.css";
 import TerminalMessage from "./TerminalMessage";
 import { RootState } from "../../store";
-import {
-  expandTerminal as expandTerminalAction,
-  // dispayLeaveMessage as dispayLeaveMessageAction,
-} from "../../store/terminalSlice";
+import { expandTerminal as expandTerminalAction } from "../../store/terminalSlice";
 import ExperienceTimeline from "./Experience/ExperienceTimeline";
 
 export default function Footer() {
@@ -17,6 +20,7 @@ export default function Footer() {
   const [activeTab, setActiveTab] = useState<
     "message" | "copyrights" | "experience"
   >("message");
+  const [isMobile, setIsMobile] = useReactState(false);
 
   const terminalMsgRef = useRef<HTMLDivElement | null>(null);
   const contactForm = useRef<HTMLFormElement>(null);
@@ -27,7 +31,6 @@ export default function Footer() {
   ) => {
     if (ref.current) {
       ref.current.classList.add(classes["slide-up-hidden"]);
-
       ref.current.addEventListener(
         "transitionend",
         () => {
@@ -80,6 +83,18 @@ export default function Footer() {
     setActiveTab(tab);
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Adjust this breakpoint as necessary
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Check on initial load
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <footer
       id="footer"
@@ -117,14 +132,16 @@ export default function Footer() {
               >
                 COPYRIGHTS
               </button>
-              <button
-                className={`${classes.tab} ${
-                  activeTab === "experience" ? classes.active : ""
-                }`}
-                onClick={() => handleTabClick("experience")}
-              >
-                EXPERIENCE
-              </button>
+              {!isMobile && (
+                <button
+                  className={`${classes.tab} ${
+                    activeTab === "experience" ? classes.active : ""
+                  }`}
+                  onClick={() => handleTabClick("experience")}
+                >
+                  EXPERIENCE
+                </button>
+              )}
               <button
                 className={classes.tab}
                 onClick={() => window.scrollTo(0, 0)}
@@ -155,15 +172,16 @@ export default function Footer() {
                 terminalPath="/"
               />
               <div>
-                <p>
-                  <i className="bx bx-heart bx-burst"></i> Made By Noam Norman.
+                <p id="copyrights">
+                  <i className="bx bx-heart bx-burst"></i> Made By Noam Norman.{" "}
+                  <br />
                   &copy; {new Date().getFullYear()} All rights reserved.{" "}
                   <i className="bx bx-heart bx-burst"></i>
                 </p>
               </div>
             </>
           )}
-          {activeTab === "experience" && (
+          {activeTab === "experience" && !isMobile && (
             <>
               <TerminalMessage
                 terminalMsgRef={terminalMsgRef}
@@ -177,7 +195,8 @@ export default function Footer() {
 
         <div className={classes.terminalButtons}>
           <span>
-            <i className="bx bash"></i>bash
+            <i className="bx bash"></i>
+            {isMobile ? "" : "bash"}
           </span>
           <span>
             <i className="plus"></i>

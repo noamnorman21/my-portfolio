@@ -146,6 +146,21 @@
   ],
   "experience": [
     {
+      "date": "OCTOBER 2022 – JULY 2023",
+      "title": "Teaching Assistant",
+      "company": "Ruppin Academic Center"
+    },
+    {
+      "date": "JULY 2022 – OCTOBER 2023",
+      "title": "Full Stack Developer",
+      "company": "Konimbo"
+    },
+    {
+      "date": "OCTOBER 2023 – JUNE 2024",
+      "title": "RPA Developer",
+      "company": "HMS"
+    },
+    {
       "date": "DECEMBER 2024 – PRESENT",
       "title": "Lecturer",
       "company": "Ruppin Academic Center"
@@ -154,21 +169,6 @@
       "date": "JUNE 2024 – PRESENT",
       "title": "Full Stack Developer",
       "company": "Israeli Ministry of Defense"
-    },
-    {
-      "date": "OCTOBER 2023 – JUNE 2024",
-      "title": "RPA Developer",
-      "company": "HMS"
-    },
-    {
-      "date": "JULY 2022 – OCTOBER 2023",
-      "title": "Full Stack Developer",
-      "company": "Konimbo"
-    },
-    {
-      "date": "OCTOBER 2022 – JULY 2023",
-      "title": "Teaching Assistant",
-      "company": "Ruppin Academic Center"
     }
   ]
 }

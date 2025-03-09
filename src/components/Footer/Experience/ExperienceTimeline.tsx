@@ -1,12 +1,15 @@
 import classes from "./ExperienceTimeline.module.css";
 import experienceData from "../../../data/index.json";
+// import DesktopExperience from "./DesktopExperience";
+// import MobileExperience from "./MobileExperience";
 
 export default function ExperienceTimeline() {
+  const data = experienceData.experience;
   return (
     <div className={classes.timelineContainer}>
       <div className={classes.timeline}>
         <div className={classes.timelineHeader}>
-          {experienceData.experience.map((exp, index) => (
+          {data.map((index: any) => (
             <div key={index} className={classes.timelineNode}>
               <div className={classes.iconContainer}>
                 <i className="bx bx-briefcase"></i>
@@ -17,7 +20,7 @@ export default function ExperienceTimeline() {
         </div>
 
         <div className={classes.timelineContent}>
-          {experienceData.experience.map((exp, index) => (
+          {data.map((exp: any, index: any) => (
             <div key={index} className={classes.timelineItem}>
               <h3 className={classes.institution}>{exp.company}</h3>
               <p className={classes.title}>{exp.title}</p>

@@ -94,3 +94,28 @@
   font-size: 0.8rem;
   text-transform: uppercase;
 }
+
+@media (max-width: 768px) {
+  .timelineContainer {
+    padding: 1rem 0;
+    overflow-y: auto; /* Enable vertical scroll */
+    scrollbar-width: thin; /* Optional: make the scrollbar less chunky */
+    scrollbar-color: var(--varColor) transparent; /* Optional: custom scrollbar color */
+  }
+
+  /* Ensure that each experience item fills the width of the container */
+  .timlineSmall {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    min-height: 100px; /* Ensure each item has a minimum height */
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Ensure items are spaced out */
+  }
+}
