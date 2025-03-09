@@ -18,7 +18,7 @@
   --leftLineColor: #5e5e5e;
   --leftLineColorFocus: #b7b7b7;
   --numberColor: #b5cea8;
-  --logoNameColor: #f9d81b;
+  --logoNameColor: #f9471b;
   --functionColor: #d8dcab;
   --navLinksColor: #cd7cc9;
   --borderLineColor: #303030;
@@ -173,20 +173,15 @@ nav:focus-within {
   }
 
   p {
-    /* height: 1.5rem; */
     width: 100%;
     counter-increment: line;
-    /* padding-left: 35px; */
 
     &::before {
       display: flex;
       flex-direction: column;
-      /* font-size: 0.9rem; */
       content: counter(line);
-      /* width: 0.5vw; */
       margin-left: -5rem;
       margin-right: 5rem;
-      /* color: #a0a0a0; */
       color: var(--lineNumbersColor);
       width: 2em;
       text-align: right;
@@ -261,10 +256,8 @@ nav:focus-within {
     }
 
     p {
-      /* height: 1.5rem; */
       width: 100%;
       counter-increment: line;
-      /* padding-left: 35px; */
 
       &::before {
         display: flex;
