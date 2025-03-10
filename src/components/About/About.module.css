@@ -84,4 +84,12 @@
   .about_section {
     margin: 1.5rem 0 1.5rem 0;
   }
+
+  .type {
+    font-size: 0.9rem;
+  }
+
+  .about_section br {
+    display: none;
+  }
 }
