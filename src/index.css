@@ -32,6 +32,7 @@
   --terminalTabFocusColor: #fff;
   --terminalMsgColor: #5cc965;
   --terminalNameColor: #24b8db;
+  --fontFamily: monospace, consolas;
 
   --hexToFilter: invert(77%) sepia(46%) saturate(6278%) hue-rotate(192deg)
     brightness(117%) contrast(94%);
