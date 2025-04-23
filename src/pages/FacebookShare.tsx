@@ -56,7 +56,7 @@ const FacebookShare: React.FC = () => {
     );
   };
 
-  return <button onClick={handleFBShare}>שיתוף בפייסבוק</button>;
+  return <button onClick={handleFBShare}> חדש - שיתוף בפייסבוק</button>;
 };
 
 export default FacebookShare;
