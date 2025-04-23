@@ -77,7 +77,19 @@ const FacebookShare: React.FC = () => {
     // );
   };
 
-  return <button onClick={handleFBShareHybrid}>חדש - שיתוף בפייסבוק</button>;
+  return (
+    <iframe
+      src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.izkor.gov.il%2Ffacebook%2Fmemory%2Fa9c2e6e8-2c97-4c7d-84b8-c003d8e875c2&layout&size&appId=688096043671560&width=77&height=20"
+      width="77"
+      height="20"
+      style={{ border: "none", overflow: "hidden" }}
+      frameBorder="0"
+      allowFullScreen={true}
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+      title="Facebook Share Button"
+    ></iframe>
+  );
+  // <button onClick={handleFBShareHybrid}>חדש - שיתוף בפייסבוק</button>
 };
 
 export default FacebookShare;
