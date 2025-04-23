@@ -77,17 +77,38 @@ const FacebookShare: React.FC = () => {
     // );
   };
 
+  const handleShareWithNavigator = () => {
+    const url =
+      "https://izkorimg.azureedge.net/ner/izkor_candle_general_image_v2.jpg";
+    const text = "שיתוף זיכרון"; // טקסט שתרצי לשתף
+    const shareData = {
+      title: "שיתוף זיכרון",
+      text: text,
+      url: url,
+    };
+
+    if (navigator.share) {
+      navigator
+        .share(shareData)
+        .then(() => console.log("Shared successfully"))
+        .catch((error) => console.error("Error sharing:", error));
+    } else {
+      alert("Sharing not supported on this browser.");
+    }
+  };
+
   return (
-    <iframe
-      src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.izkor.gov.il%2Ffacebook%2Fmemory%2Fa9c2e6e8-2c97-4c7d-84b8-c003d8e875c2&layout&size&appId=688096043671560&width=77&height=20"
-      width="77"
-      height="20"
-      style={{ border: "none", overflow: "hidden" }}
-      frameBorder="0"
-      allowFullScreen={true}
-      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-      title="Facebook Share Button"
-    ></iframe>
+    // <iframe
+    //   src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.izkor.gov.il%2Ffacebook%2Fmemory%2Fa9c2e6e8-2c97-4c7d-84b8-c003d8e875c2&layout&size&appId=688096043671560&width=77&height=20"
+    //   width="77"
+    //   height="20"
+    //   style={{ border: "none", overflow: "hidden" }}
+    //   frameBorder="0"
+    //   allowFullScreen={true}
+    //   allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+    //   title="Facebook Share Button"
+    // ></iframe>
+    <button onClick={handleShareWithNavigator}>שיתוף</button>
   );
   // <button onClick={handleFBShareHybrid}>חדש - שיתוף בפייסבוק</button>
 };
