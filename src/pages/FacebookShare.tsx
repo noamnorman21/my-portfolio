@@ -36,15 +36,16 @@ const FacebookShare: React.FC = () => {
 
     window.FB.ui(
       {
-        method: "share",
+        // method: "share",
         display: "popup",
-        // method: 'share_open_graph',
-        // action_type: 'og.likes',
-        // action_properties: JSON.stringify({
-        //     object:'https://developers.facebook.com/docs/',
-        // })
+        method: "share_open_graph",
+        action_type: "og.likes",
+        action_properties: JSON.stringify({
+          object:
+            "https://www.izkor.gov.il/facebook/memory/a9c2e6e8-2c97-4c7d-84b8-c003d8e875c2",
+        }),
 
-        href: "https://www.izkor.gov.il/facebook/memory/a9c2e6e8-2c97-4c7d-84b8-c003d8e875c2", // 🖼 כתובת הדף שאת משתפת
+        // href: "https://www.izkor.gov.il/facebook/memory/a9c2e6e8-2c97-4c7d-84b8-c003d8e875c2", // 🖼 כתובת הדף שאת משתפת
       },
       function (response: any) {
         if (response && !response.error_message) {
@@ -56,7 +57,7 @@ const FacebookShare: React.FC = () => {
     );
   };
 
-  return <button onClick={handleFBShare}>חדש - שיתוף בפייסבוק - יאי</button>;
+  return <button onClick={handleFBShare}>חדש - שיתוף בפייסבוק</button>;
 };
 
 export default FacebookShare;
