@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 
-// Extend the Window interface to include fbAsyncInit
 declare global {
   interface Window {
     fbAsyncInit?: () => void;
@@ -9,15 +8,20 @@ declare global {
 }
 
 const FacebookShare: React.FC = () => {
+  const shareUrl =
+    "https://www.izkor.gov.il/facebook/memory/a9c2e6e8-2c97-4c7d-84b8-c003d8e875c2";
+  const shareImage =
+    "https://izkorimg.azureedge.net/ner/izkor_candle_general_image_v2.jpg";
+  const shareText = "לזכר נופלי מערכות ישראל ופעולות האיבה";
+
   useEffect(() => {
-    // Load the Facebook SDK
     if (!window.FB) {
       window.fbAsyncInit = function () {
         window.FB.init({
-          appId: "688096043671560", // 🔁 שימי את ה-App ID האמיתי שלך
+          appId: "688096043671560",
           xfbml: true,
           cookie: true,
-          version: "v22.0", // גרסה עדכנית
+          version: "v22.0",
         });
       };
 
@@ -28,7 +32,7 @@ const FacebookShare: React.FC = () => {
     }
   }, []);
 
-  const handleFBShare = () => {
+  const handleFBSDKShare = () => {
     if (!window.FB) {
       alert("Facebook SDK not loaded yet.");
       return;
@@ -36,16 +40,9 @@ const FacebookShare: React.FC = () => {
 
     window.FB.ui(
       {
-        // method: "share",
+        method: "share",
+        href: shareUrl,
         display: "popup",
-        method: "share_open_graph",
-        action_type: "og.likes",
-        action_properties: JSON.stringify({
-          object:
-            "https://www.izkor.gov.il/facebook/memory/a9c2e6e8-2c97-4c7d-84b8-c003d8e875c2",
-        }),
-
-        // href: "https://www.izkor.gov.il/facebook/memory/a9c2e6e8-2c97-4c7d-84b8-c003d8e875c2", // 🖼 כתובת הדף שאת משתפת
       },
       function (response: any) {
         if (response && !response.error_message) {
@@ -57,60 +54,42 @@ const FacebookShare: React.FC = () => {
     );
   };
 
-  const handleFBShareHybrid = () => {
-    window.open(
-      "fb://facewebmodal/f?href=https://www.izkor.gov.il/facebook/memory/a9c2e6e8-2c97-4c7d-84b8-c003d8e875c2",
-      "_blank"
-    );
-    // window.FB.ui(
-    //   {
-    //     method: "share",
-    //     href: "https://www.izkor.gov.il/facebook/memory/a9c2e6e8-2c97-4c7d-84b8-c003d8e875c2", // 🖼 כתובת הדף שאת משתפת
-    //   },
-    //   function (response: any) {
-    //     if (response && !response.error_message) {
-    //       alert("Shared successfully");
-    //     } else {
-    //       alert("Error while sharing.");
-    //     }
-    //   }
-    // );
+  const handleFacebookAppShare = () => {
+    // ניסיון לפתוח ישירות באפליקציית פייסבוק
+    const fbAppLink = `fb://facewebmodal/f?href=${encodeURIComponent(
+      shareUrl
+    )}`;
+    window.open(fbAppLink, "_blank");
   };
 
-  const handleShareWithNavigator = () => {
-    const url =
-      "https://izkorimg.azureedge.net/ner/izkor_candle_general_image_v2.jpg";
-    const text = "שיתוף זיכרון"; // טקסט שתרצי לשתף
-    const shareData = {
-      title: "שיתוף זיכרון",
-      text: text,
-      url: url,
-    };
+  const handleWebShare = () => {
+    const shareRedirectUrl = `https://www.izkor.gov.il/share/a9c2e6e8-2c97-4c7d-84b8-c003d8e875c2`;
+    const shareText = "לזכר נופלי מערכות ישראל ופעולות האיבה";
 
     if (navigator.share) {
       navigator
-        .share(shareData)
-        .then(() => console.log("Shared successfully"))
-        .catch((error) => console.error("Error sharing:", error));
+        .share({
+          title: "שיתוף זיכרון",
+          text: shareText,
+          url: shareRedirectUrl,
+        })
+        .then(() => console.log("Shared via Web Share API"))
+        .catch((err) => console.error("Web Share failed:", err));
     } else {
-      alert("Sharing not supported on this browser.");
+      alert("השיתוף דרך הדפדפן לא נתמך");
     }
   };
 
   return (
-    // <iframe
-    //   src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.izkor.gov.il%2Ffacebook%2Fmemory%2Fa9c2e6e8-2c97-4c7d-84b8-c003d8e875c2&layout&size&appId=688096043671560&width=77&height=20"
-    //   width="77"
-    //   height="20"
-    //   style={{ border: "none", overflow: "hidden" }}
-    //   frameBorder="0"
-    //   allowFullScreen={true}
-    //   allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-    //   title="Facebook Share Button"
-    // ></iframe>
-    <button onClick={handleShareWithNavigator}>שיתוף</button>
+    <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+      <button onClick={handleFBSDKShare}>שיתוף דרך פייסבוק (דפדפן)</button>
+      <button onClick={handleFacebookAppShare}>פתיחה באפליקציית פייסבוק</button>
+      <button onClick={handleWebShare}>שיתוף דרך מערכת (Web Share API)</button>
+      <a href={shareUrl} target="_blank" rel="noopener noreferrer">
+        לשיתוף רגיל (קישור)
+      </a>
+    </div>
   );
-  // <button onClick={handleFBShareHybrid}>חדש - שיתוף בפייסבוק</button>
 };
 
 export default FacebookShare;
