@@ -60,24 +60,6 @@ const FacebookShare: React.FC = () => {
     window.open(fbAppLink, "_blank");
   };
 
-  const handleWebShare = () => {
-    const shareRedirectUrl = `https://www.izkor.gov.il/share/en_5570c7dc49c02c49f8a74e3f0a98623c/a9c2e6e8-2c97-4c7d-84b8-c003d8e875c2`;
-    const shareText = "לזכר נופלי מערכות ישראל ופעולות האיבה";
-
-    if (navigator.share) {
-      navigator
-        .share({
-          title: "שיתוף זיכרון",
-          text: shareText,
-          url: shareRedirectUrl,
-        })
-        .then(() => console.log("Shared via Web Share API"))
-        .catch((err) => console.error("Web Share failed:", err));
-    } else {
-      alert("השיתוף דרך הדפדפן לא נתמך");
-    }
-  };
-
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
       <FacebookShareButton url={shareUrl}>
@@ -85,7 +67,6 @@ const FacebookShare: React.FC = () => {
       </FacebookShareButton>
       <button onClick={handleFBSDKShare}>שיתוף דרך פייסבוק (דפדפן)</button>
       <button onClick={handleFacebookAppShare}>פתיחה באפליקציית פייסבוק</button>
-      <button onClick={handleWebShare}>שיתוף דרך מערכת (Web Share API)</button>
       <a href={shareUrl} target="_blank" rel="noopener noreferrer">
         לשיתוף רגיל (קישור)
       </a>
