@@ -13,7 +13,7 @@ export default function App() {
       {/* זה ראוט "סודי" – אין לינק אליו, רק אם מישהו מגיע ישירות ל־URL */}
       <Route path="/facebook-share" element={<FacebookShare />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-      <Route path="/share/:id" element={<ShareRedirect />} />
+      <Route path="/share/:uuid/:id" element={<ShareRedirect />} />
       <Route path="/data-deletion" element={<DataDeletion />} />
     </Routes>
   );

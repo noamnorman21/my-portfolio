@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { FacebookShareButton } from "react-share";
 
 declare global {
   interface Window {
@@ -60,7 +61,7 @@ const FacebookShare: React.FC = () => {
   };
 
   const handleWebShare = () => {
-    const shareRedirectUrl = `https://www.izkor.gov.il/share/a9c2e6e8-2c97-4c7d-84b8-c003d8e875c2`;
+    const shareRedirectUrl = `https://www.izkor.gov.il/share/en_5570c7dc49c02c49f8a74e3f0a98623c/a9c2e6e8-2c97-4c7d-84b8-c003d8e875c2`;
     const shareText = "לזכר נופלי מערכות ישראל ופעולות האיבה";
 
     if (navigator.share) {
@@ -79,6 +80,9 @@ const FacebookShare: React.FC = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+      <FacebookShareButton url={shareUrl}>
+        Share on Facebook
+      </FacebookShareButton>
       <button onClick={handleFBSDKShare}>שיתוף דרך פייסבוק (דפדפן)</button>
       <button onClick={handleFacebookAppShare}>פתיחה באפליקציית פייסבוק</button>
       <button onClick={handleWebShare}>שיתוף דרך מערכת (Web Share API)</button>

@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 const ShareRedirect: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id, uuid } = useParams<{ id: string; uuid: string }>();
 
-  const redirectUrl = `https://www.izkor.gov.il/fallen/${id}`;
+  const redirectUrl = `https://www.izkor.gov.il/fallen/${uuid}`;
   const imageUrl = `https://izkorimg.azureedge.net/2025/${id}.jpg`; // נניח שכל ID מקבל תמונה משלו
 
   useEffect(() => {
