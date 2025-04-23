@@ -57,7 +57,27 @@ const FacebookShare: React.FC = () => {
     );
   };
 
-  return <button onClick={handleFBShare}>חדש - שיתוף בפייסבוק</button>;
+  const handleFBShareHybrid = () => {
+    window.open(
+      "fb://facewebmodal/f?href=https://www.izkor.gov.il/facebook/memory/a9c2e6e8-2c97-4c7d-84b8-c003d8e875c2",
+      "_blank"
+    );
+    // window.FB.ui(
+    //   {
+    //     method: "share",
+    //     href: "https://www.izkor.gov.il/facebook/memory/a9c2e6e8-2c97-4c7d-84b8-c003d8e875c2", // 🖼 כתובת הדף שאת משתפת
+    //   },
+    //   function (response: any) {
+    //     if (response && !response.error_message) {
+    //       alert("Shared successfully");
+    //     } else {
+    //       alert("Error while sharing.");
+    //     }
+    //   }
+    // );
+  };
+
+  return <button onClick={handleFBShareHybrid}>חדש - שיתוף בפייסבוק</button>;
 };
 
 export default FacebookShare;
