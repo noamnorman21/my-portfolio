@@ -16,15 +16,15 @@ const FacebookShare: React.FC = () => {
         window.FB.init({
           appId: "688096043671560", // 🔁 שימי את ה-App ID האמיתי שלך
           xfbml: true,
-          status: true,
+          cookie: true,
           version: "v22.0", // גרסה עדכנית
         });
       };
 
-      // const script = document.createElement("script");
-      // script.src = "https://connect.facebook.net/en_US/sdk.js";
-      // script.async = true;
-      // document.body.appendChild(script);
+      const script = document.createElement("script");
+      script.src = "https://connect.facebook.net/en_US/sdk.js";
+      script.async = true;
+      document.body.appendChild(script);
     }
   }, []);
 
@@ -56,7 +56,7 @@ const FacebookShare: React.FC = () => {
     );
   };
 
-  return <button onClick={handleFBShare}> חדש - שיתוף בפייסבוק</button>;
+  return <button onClick={handleFBShare}>חדש - שיתוף בפייסבוק - יאי</button>;
 };
 
 export default FacebookShare;
