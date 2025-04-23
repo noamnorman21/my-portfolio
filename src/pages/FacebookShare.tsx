@@ -10,9 +10,6 @@ declare global {
 const FacebookShare: React.FC = () => {
   const shareUrl =
     "https://www.izkor.gov.il/facebook/memory/a9c2e6e8-2c97-4c7d-84b8-c003d8e875c2";
-  const shareImage =
-    "https://izkorimg.azureedge.net/ner/izkor_candle_general_image_v2.jpg";
-  const shareText = "לזכר נופלי מערכות ישראל ופעולות האיבה";
 
   useEffect(() => {
     if (!window.FB) {

@@ -5,23 +5,23 @@ import { Helmet } from "react-helmet";
 const ShareRedirect: React.FC = () => {
   const { id } = useParams<{ id: string }>();
 
+  const redirectUrl = `https://www.izkor.gov.il/fallen/${id}`;
+  const imageUrl = `https://izkorimg.azureedge.net/2025/${id}.jpg`; // נניח שכל ID מקבל תמונה משלו
+
   useEffect(() => {
-    // תני לו זמן קטן לסרוק את המטא ואז להפנות
     const timeout = setTimeout(() => {
       if (id) {
-        window.location.replace(`https://www.izkor.gov.il/fallen/${id}`);
+        window.location.replace(redirectUrl);
       }
-    }, 1000); // שנייה אחת
+    }, 1000); // זמן סריקה למטא־תגים
 
     return () => clearTimeout(timeout);
-  }, [id]);
-
-  const imageUrl =
-    "https://izkorimg.azureedge.net/2025/290e4ed8-91e3-4b3d-b6f5-b3fa6516dcbb.jpg";
+  }, [id, redirectUrl]);
 
   return (
     <>
       <Helmet>
+        <title>נר זיכרון</title>
         <meta property="og:title" content="נר זיכרון" />
         <meta
           property="og:description"
@@ -29,10 +29,7 @@ const ShareRedirect: React.FC = () => {
         />
         <meta property="og:image" content={imageUrl} />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content={`https://www.izkor.gov.il/fallen/${id}`}
-        />
+        <meta property="og:url" content={redirectUrl} />
       </Helmet>
       <p>מעביר לעמוד ההנצחה...</p>
     </>
